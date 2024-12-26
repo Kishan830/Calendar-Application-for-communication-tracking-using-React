@@ -2,13 +2,13 @@
 // npx create-react-app communication-tracker --template typescript
 
 // Install necessary dependencies:
-/*
+
 npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
 npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/interaction
 npm install react-router-dom @reduxjs/toolkit react-redux
 npm install tailwindcss postcss autoprefixer
 npm install @heroicons/react date-fns
-*/
+
 
 // src/types/index.ts
 export interface Company {
