@@ -1,0 +1,83 @@
+// First, create a new React project using create-react-app with TypeScript
+// npx create-react-app communication-tracker --template typescript
+
+// Install necessary dependencies:
+/*
+npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
+npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/interaction
+npm install react-router-dom @reduxjs/toolkit react-redux
+npm install tailwindcss postcss autoprefixer
+npm install @heroicons/react date-fns
+*/
+
+// src/types/index.ts
+export interface Company {
+  id: string;
+  name: string;
+  location: string;
+  linkedinProfile: string;
+  emails: string[];
+  phoneNumbers: string[];
+  comments: string;
+  communicationPeriodicity: number; // in days
+}
+
+export interface CommunicationMethod {
+  id: string;
+  name: string;
+  description: string;
+  sequence: number;
+  isMandatory: boolean;
+}
+
+export interface Communication {
+  id: string;
+  companyId: string;
+  methodId: string;
+  date: Date;
+  notes: string;
+}
+
+// src/App.tsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AdminModule from './modules/admin/AdminModule';
+import UserModule from './modules/user/UserModule';
+import ReportingModule from './modules/reporting/ReportingModule';
+import Navigation from './components/Navigation';
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <div className="min-h-screen bg-gray-100">
+        <Navigation />
+        <main className="container mx-auto px-4 py-8">
+          <Routes>
+            <Route path="/admin/*" element={<AdminModule />} />
+            <Route path="/dashboard" element={<UserModule />} />
+            <Route path="/reports" element={<ReportingModule />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
+
+// src/store/index.ts
+import { configureStore } from '@reduxjs/toolkit';
+import companiesReducer from './slices/companiesSlice';
+import communicationsReducer from './slices/communicationsSlice';
+import methodsReducer from './slices/methodsSlice';
+
+export const store = configureStore({
+  reducer: {
+    companies: companiesReducer,
+    communications: communicationsReducer,
+    methods: methodsReducer,
+  },
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
