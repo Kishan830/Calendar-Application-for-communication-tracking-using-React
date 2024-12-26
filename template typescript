@@ -1,0 +1,2 @@
+npx create-react-app communication-tracker --template typescript
+cd communication-tracker
