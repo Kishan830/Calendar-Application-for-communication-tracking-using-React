@@ -11,8 +11,6 @@
 - User Dashboard with communication tracking
 - Calendar View for scheduling
 - Reporting and Analytics
-# React Calendar: A Guide to Building Dynamic Calendars with Events and Todos
-
 This project serves as a comprehensive example of a calendar application built with React and Material UI. Bootstrapped with [Create React App](https://github.com/facebook/create-react-app), the application demonstrates how to integrate event management, todo lists, and color-coded functionalities into a dynamic calendar.
 
 ## Key Features
